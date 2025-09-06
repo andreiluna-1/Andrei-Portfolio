@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Andrei Luna's Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background-color: #121212; color: #e6eef6; }
+  .glow-hover:hover { border-color: #34d399; box-shadow: 0 6px 30px rgba(52,211,153,0.2); }
+  .intro-bg { background: linear-gradient(135deg, rgba(56,59,66,0.45), rgba(18,20,25,0.45)); position: relative; overflow: hidden; border-radius: 1rem; }
+  .intro-bg::before { content: ''; position: absolute; inset: -50% -25%; background: radial-gradient(circle at 10% 20%, rgba(52,211,153,0.06), transparent 10%), radial-gradient(circle at 90% 80%, rgba(99,102,241,0.04), transparent 10%); animation: float 12s linear infinite; }
+  @keyframes float { 0%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-10%) rotate(20deg);} 100%{transform:translateY(0) rotate(0deg);} }
+
+  .typing { border-right: 2px solid rgba(52,211,153,0.9); padding-right: .4rem; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(14px);} to{opacity:1;transform:translateY(0);} }
+  .appear { opacity:0; transform:translateY(14px); animation: fadeUp .7s ease forwards; }
+
+  /* Testimonials */
+  .testimonial-slide { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition: opacity 1s ease; flex-direction:column; text-align:center; }
+  .testimonial-slide.active { opacity:1; position:relative; }
+  .dot { width:16px; height:16px; border-radius:9999px; background:#555; transition: all .25s; cursor:pointer; }
+  .dot:hover { box-shadow:0 0 10px rgba(52,211,153,.35); transform:scale(1.05); }
+  .dot.active { background:#34d399; box-shadow:0 0 18px rgba(52,211,153,.35); }
+
+  input, textarea { background: rgba(255,255,255,0.03); color:#e6eef6; }
+</style>
+</head>
+<body class="antialiased">
+<main class="max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+  <!-- INTRO / PROFILE -->
+  <section class="col-span-1 md:col-span-3 appear intro-bg shadow-lg p-10 flex flex-col items-center text-center relative glow-hover" style="animation-delay:.1s">
+    <div class="relative w-32 h-32 mb-6">
+      <div class="absolute inset-0 rounded-full bg-emerald-500 opacity-20 blur-xl animate-pulse"></div>
+      <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-emerald-600 transition transform hover:scale-105 hover:shadow-lg">
+        <img src="images/Luna 2x2.jpg" alt="Andrei Luna" class="w-full h-full object-cover scale-105 object-top object-center object-bottom">
+      </div>
+    </div>
+    <h1 class="text-4xl md:text-5xl font-extrabold">Andrei Luna</h1>
+    <p class="text-gray-400 mt-2 text-lg">Video Editor | Data Entry Specialist | Content Creator</p>
+    <p class="text-gray-300 mt-4 max-w-2xl"><span id="typing" class="typing font-medium"></span></p>
+    <p class="text-gray-300 mt-2 max-w-2xl">I create short-form and long-form videos that engage audiences and help brands grow. I also provide accurate and efficient data entry services for businesses.</p>
+    <div class="flex flex-wrap justify-center gap-3 mt-4">
+      <span class="bg-gray-800 bg-opacity-60 text-emerald-300 px-3 py-1 rounded-full text-sm">Video Editing</span>
+      <span class="bg-gray-800 bg-opacity-60 text-emerald-300 px-3 py-1 rounded-full text-sm">Color Grading</span>
+      <span class="bg-gray-800 bg-opacity-60 text-emerald-300 px-3 py-1 rounded-full text-sm">Motion Graphics</span>
+      <span class="bg-gray-800 bg-opacity-60 text-emerald-300 px-3 py-1 rounded-full text-sm">Data Entry</span>
+      <span class="bg-gray-800 bg-opacity-60 text-emerald-300 px-3 py-1 rounded-full text-sm">CMS Management</span>
+    </div>
+    <div class="mt-6 flex gap-4 flex-wrap justify-center">
+      <a href="#contact" class="inline-flex items-center justify-center bg-emerald-600 px-6 py-3 rounded-xl text-black font-medium shadow hover:bg-emerald-500 transition">Hire Me</a>
+      <a href="#portfolio" class="inline-flex items-center justify-center border border-emerald-600 px-6 py-3 rounded-xl text-emerald-300 hover:bg-emerald-700 hover:text-white transition">View Work</a>
+      <a href="resume.pdf" download class="inline-flex items-center justify-center border border-gray-700 px-4 py-3 rounded-xl text-gray-200 hover:bg-gray-800 transition">Download Resume</a>
+    </div>
+  </section>
+
+<!-- PHOTO TILE WITH ANIMATED OVERLAY -->
+<aside class="bg-gray-900 bg-opacity-95 rounded-2xl shadow p-6 flex items-center justify-center transition transform hover:scale-105 glow-hover appear" style="animation-delay:.2s">
+  <div class="relative w-44 h-44">
+    <!-- Glowing background circle -->
+    <div class="absolute inset-0 rounded-full bg-emerald-500 opacity-20 blur-xl animate-pulse"></div>
+    <!-- Animated radial gradient overlay -->
+    <div class="absolute inset-0 rounded-full overflow-hidden">
+      <div class="absolute inset-[-20%] bg-gradient-radial from-emerald-400/10 to-transparent animate-float"></div>
+    </div>
+    <!-- Profile image -->
+    <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-emerald-600 transition transform hover:scale-105 hover:shadow-lg">
+      <img src="images/try1.jpg" alt="Andrei Luna" class="w-full h-full object-cover">
+    </div>
+  </div>
+</aside>
+
+<style>
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5%) rotate(15deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+  .animate-float {
+    animation: float 12s linear infinite;
+  }
+</style>
+
+
+  <!-- VIDEO SHOWCASE -->
+  <section class="bg-gray-900 bg-opacity-95 rounded-2xl shadow p-6 col-span-1 md:col-span-2 transition transform hover:scale-105 glow-hover appear" style="animation-delay:.3s">
+    <h2 class="text-xl font-semibold mb-3">Video Editing Showcase</h2>
+    <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg overflow-hidden">
+      <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Sample" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="bg-gray-900 bg-opacity-95 rounded-2xl shadow p-6 appear" style="animation-delay:.4s">
+    <h2 class="text-xl font-semibold mb-4">Services</h2>
+    <div class="grid grid-cols-1 gap-3">
+      <div class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-gray-800 transition glow-hover">
+        <div class="p-3 rounded-lg bg-gray-800 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A2 2 0 0122 9.618V16a2 2 0 01-1.447 1.948L16 20M4 6h8M4 10h8M4 14h8"/></svg>
+        </div>
+        <div>
+          <h3 class="font-medium">Video Editing</h3>
+          <p class="text-gray-400 text-sm">Short & long-form edits, color grading, pacing, and thumbnails.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-gray-800 transition glow-hover">
+        <div class="p-3 rounded-lg bg-gray-800 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-6a2 2 0 012-2h6"/></svg>
+        </div>
+        <div>
+          <h3 class="font-medium">Data Entry</h3>
+          <p class="text-gray-400 text-sm">Accurate spreadsheets, data cleaning, and CMS uploads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+<section class="bg-gray-900 bg-opacity-95 rounded-2xl shadow p-6 appear" style="animation-delay:.6s">
+  <h2 class="text-xl font-semibold mb-4 text-center">Testimonials</h2>
+  <div class="relative h-40 overflow-hidden">
+
+    <!-- Slide 1: LaunchPad -->
+    <div class="testimonial-slide active flex flex-col items-center">
+      <img src="images/launchpad.png" class="w-12 h-12 rounded-full mb-2 object-cover" alt="LaunchPad" />
+      <p class="text-gray-300 italic text-center">“LaunchPad has been thrilled with Andrei's editing skills and creativity.”</p>
+      <p class="text-sm text-gray-400 mt-2 text-center">— LaunchPad</p>
+    </div>
+
+    <!-- Slide 2: Anime Gear Guru -->
+    <div class="testimonial-slide flex flex-col items-center">
+      <img src="images/animegearguru.png" class="w-12 h-12 rounded-full mb-2 object-cover" alt="Anime Gear Guru" />
+      <p class="text-gray-300 italic text-center">“Anime Gear Guru loved the way Andrei brought our content to life!”</p>
+      <p class="text-sm text-gray-400 mt-2 text-center">— Anime Gear Guru</p>
+    </div>
+
+    <!-- Slide 3: Client 3 -->
+    <div class="testimonial-slide flex flex-col items-center">
+      <img src="https://via.placeholder.com/48.png?text=C3" class="w-12 h-12 rounded-full mb-2 object-cover" alt="Client 3" />
+      <p class="text-gray-300 italic text-center">“Andrei is professional, timely, and exceeded our expectations.”</p>
+      <p class="text-sm text-gray-400 mt-2 text-center">— Client 3</p>
+    </div>
+
+    <!-- Slide 4: Client 4 -->
+    <div class="testimonial-slide flex flex-col items-center">
+      <img src="https://via.placeholder.com/48.png?text=C4" class="w-12 h-12 rounded-full mb-2 object-cover" alt="Client 4" />
+      <p class="text-gray-300 italic text-center">“Reliable and detail-oriented. Highly recommend for video projects.”</p>
+      <p class="text-sm text-gray-400 mt-2 text-center">— Client 4</p>
+    </div>
+
+    <!-- Slide 5: Client 5 -->
+    <div class="testimonial-slide flex flex-col items-center">
+      <img src="https://via.placeholder.com/48.png?text=C5" class="w-12 h-12 rounded-full mb-2 object-cover" alt="Client 5" />
+      <p class="text-gray-300 italic text-center">“Creative, fast, and communicates clearly throughout the project.”</p>
+      <p class="text-sm text-gray-400 mt-2 text-center">— Client 5</p>
+    </div>
+
+  </div> <!-- closes relative h-40 overflow-hidden -->
+
+    </div>
+    <div class="flex justify-center mt-4 gap-3">
+      <button class="dot active" onclick="jumpTestimonial(0)"></button>
+      <button class="dot" onclick="jumpTestimonial(1)"></button>
+      <button class="dot" onclick="jumpTestimonial(2)"></button>
+      <button class="dot" onclick="jumpTestimonial(3)"></button>
+      <button class="dot" onclick="jumpTestimonial(4)"></button>
+    </div>
+  </section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="bg-gray-900 bg-opacity-95 rounded-2xl shadow p-6 col-span-1 md:col-span-3 appear" style="animation-delay:.7s">
+  <h2 class="text-xl font-semibold mb-4 text-center">Portfolio</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+    <!-- Image 1 -->
+    <div class="rounded-lg overflow-hidden cursor-pointer glow-hover transition duration-300">
+      <img src="images/project1.jpg" class="w-full h-48 object-cover rounded-lg" alt="Project 1">
+    </div>
+
+    <!-- Image 2 -->
+    <div class="rounded-lg overflow-hidden cursor-pointer glow-hover transition duration-300">
+      <img src="images/project2.jpg" class="w-full h-48 object-cover rounded-lg" alt="Project 2">
+    </div>
+
+    <!-- Image 3 -->
+    <div class="rounded-lg overflow-hidden cursor-pointer glow-hover transition duration-300">
+      <img src="images/project3.jpg" class="w-full h-48 object-cover rounded-lg" alt="Project 3">
+    </div>
+
+<!-- Vertical Video 1 -->
+<div class="relative rounded-lg overflow-hidden glow-hover hover:shadow-lg transition transform hover:scale-105 cursor-pointer group">
+  <video class="w-full aspect-[9/16] object-cover rounded-lg" controls>
+    <source src="videos/video1.mp4" type="video/mp4">
+  </video>
+  <!-- Hover Play Icon with pulse -->
+  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none">
+    <svg class="w-12 h-12 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M4 2v20l18-10L4 2z"/>
+    </svg>
+  </div>
+</div>
+
+<!-- Vertical Video 2 -->
+<div class="relative rounded-lg overflow-hidden transition transform hover:scale-105 cursor-pointer group">
+  <video class="w-full aspect-[9/16] object-cover rounded-lg" controls>
+    <source src="videos/video2.mp4" type="video/mp4">
+  </video>
+  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none">
+    <svg class="w-12 h-12 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M4 2v20l18-10L4 2z"/>
+    </svg>
+  </div>
+</div>
+
+<!-- Vertical Video 3 -->
+<div class="relative rounded-lg overflow-hidden transition transform hover:scale-105 cursor-pointer group">
+  <video class="w-full aspect-[9/16] object-cover rounded-lg" controls>
+    <source src="videos/video3.mp4" type="video/mp4">
+  </video>
+  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none">
+    <svg class="w-12 h-12 text-white animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M4 2v20l18-10L4 2z"/>
+    </svg>
+  </div>
+</div>
+
+<style>
+/* Green glow effect on hover */
+.group:hover {
+  box-shadow: 0 0 20px 6px rgba(52,211,153,0.6);
+  border-radius: 0.5rem; /* optional to keep corners rounded */
+}
+</style>
+
+
+  </div>
+</section>
+
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-gray-900 bg-opacity-95 rounded-2xl shadow p-6 col-span-1 md:col-span-3 appear" style="animation-delay:.8s">
+    <h2 class="text-xl font-semibold mb-4">Contact</h2>
+    <form action="https://formsubmit.co/rodolfoandreiluna04@gmail.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" name="name" placeholder="Your Name" required class="p-3 rounded-lg w-full">
+      <input type="email" name="email" placeholder="Your Email" required class="p-3 rounded-lg w-full">
+      <textarea name="message" placeholder="Your Message" required class="p-3 rounded-lg col-span-1 md:col-span-2 h-32 w-full"></textarea>
+      <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-black font-medium rounded-lg py-3 col-span-1 md:col-span-2 transition">Send Message</button>
+    </form>
+    <div class="flex flex-col md:flex-row gap-4 mt-4">
+      <span class="text-gray-300">Email: <a href="mailto:rodolfoandreiluna04@gmail.com" class="text-emerald-300 hover:text-emerald-500">rodolfoandreiluna04@gmail.com</a></span>
+      <a href="https://www.instagram.com/ral_luna/" target="_blank" class="text-emerald-300 hover:text-emerald-500">Instagram</a>
+      <a href="https://www.upwork.com/freelancers/~01783edaf7a0af34c5" target="_blank" class="text-emerald-300 hover:text-emerald-500">Upwork</a>
+      <a href="https://www.onlinejobs.ph/jobseekers/info/1735762" target="_blank" class="text-emerald-300 hover:text-emerald-500">OnlineJobs.ph</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Typing animation
+  const roles = ['Video Editor', 'Data Entry Specialist', 'Content Creator'];
+  let idx = 0, char = 0;
+  const typingEl = document.getElementById('typing');
+  function typeRole() {
+    if(char < roles[idx].length) {
+      typingEl.textContent += roles[idx][char++];
+      setTimeout(typeRole, 150);
+    } else { setTimeout(eraseRole, 1200); }
+  }
+  function eraseRole() {
+    if(char > 0) {
+      typingEl.textContent = roles[idx].substring(0, --char);
+      setTimeout(eraseRole, 100);
+    } else { idx = (idx+1) % roles.length; setTimeout(typeRole, 200); }
+  }
+  typeRole();
+
+  // Testimonials
+   const tSlides = document.querySelectorAll('.testimonial-slide');
+  const tDots = document.querySelectorAll('.dot');
+  let tCurrent = 0;
+
+  function showTestimonial(i){
+    tSlides.forEach((s, idx) => s.classList.toggle('active', idx===i));
+    tDots.forEach((d, idx) => d.classList.toggle('active', idx===i));
+    tCurrent = i;
+  }
+
+  function jumpTestimonial(i){ showTestimonial(i); }
+  function tAuto(){ showTestimonial((tCurrent+1)%tSlides.length); }
+
+  setInterval(tAuto, 3000); // 3-second loop
+  showTestimonial(0);
+</script>
+
+</body>
+</html>
