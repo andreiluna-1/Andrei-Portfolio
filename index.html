@@ -58,18 +58,31 @@
 <!-- PHOTO TILE WITH ANIMATED OVERLAY -->
 <aside class="bg-gray-900 bg-opacity-95 rounded-2xl shadow p-6 flex items-center justify-center transition transform hover:scale-105 glow-hover appear" style="animation-delay:.2s">
   <div class="relative w-44 h-44">
+
     <!-- Glowing background circle -->
     <div class="absolute inset-0 rounded-full bg-emerald-500 opacity-20 blur-xl animate-pulse"></div>
+
     <!-- Animated radial gradient overlay -->
     <div class="absolute inset-0 rounded-full overflow-hidden">
       <div class="absolute inset-[-20%] bg-gradient-radial from-emerald-400/10 to-transparent animate-float"></div>
     </div>
-    <!-- Profile image -->
+
+    <!-- Profile VIDEO -->
     <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-emerald-600 transition transform hover:scale-105 hover:shadow-lg">
-      <img src="videos/icons exploding.mp4" alt="Andrei Luna" class="w-full h-full object-cover">
+      <video
+        class="w-full h-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source src="videos/icons exploding.mp4" type="video/mp4">
+      </video>
     </div>
+
   </div>
 </aside>
+
 
 <style>
   @keyframes float {
